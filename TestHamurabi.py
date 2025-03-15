@@ -1,3 +1,5 @@
+from Hammurabi import Hammurabi
+
 
 class HammurabiTest:
     def __init__(self):
