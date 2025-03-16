@@ -23,11 +23,11 @@ class Hammurabi:
         # statements go after the declarations
 
     # other methods go here
-    def askHowManyAcresToBuy(self):
+    def askHowManyAcresToBuy(self,land_val):
         acresSold = int(input("How many acres will you buy?"))
         return acresSold
 
-    def askHowManyAcresToSell(self):
+    def askHowManyAcresToSell(self,land_val):
         acresBought = int(input("How many acres will you sell?"))
         return acresBought
 
@@ -68,7 +68,7 @@ class Hammurabi:
 
 
         print(
-
+        "=================================\n"
         "O great Hammurabi!\n"
         "You are in year 1 of your ten year rule.\n"
         "In the previous year 0 people starved to death.\n"
@@ -78,6 +78,7 @@ class Hammurabi:
         "Rats destroyed 200 bushels, leaving 2800 bushels in storage.\n"
         "The city owns " + str(land) + " acres of land.\n"
         "Land is currently worth " + str(land_val) + " bushels per acre.\n"
+        "==================================\n"
 
 
         )
