@@ -18,17 +18,20 @@ class Hammurabi:
 
     # other methods go here
     def askHowManyAcresToBuy(self):
-
-        pass
+        acresSold = int(input("How many acres will you buy?"))
+        return acresSold
 
     def askHowManyAcresToSell(self):
-        pass
+        acresBought = int(input("How many acres will you sell?"))
+        return acresBought
 
     def askHowMuchGrainToFeedPeople(self):
-        pass
+        feedPeople = int(input("How much grain will you give to your people?"))
+        return feedPeople
 
     def askHowManyAcresToPlant(self):
-        pass
+        acresToPlant = int(input("How many acres will you plant?"))
+        return acresToPlant
 
     def plagueDeaths(self, population):
         pass
@@ -76,4 +79,8 @@ class Hammurabi:
 if __name__ == "__main__":
     hammurabi = Hammurabi()
     hammurabi.main()
+    hammurabi.askHowManyAcresToBuy()
+    hammurabi.askHowManyAcresToSell()
+    hammurabi.askHowMuchGrainToFeedPeople()
+    hammurabi.askHowManyAcresToPlant()
     hammurabi.summary(100,2800,1000,19)
