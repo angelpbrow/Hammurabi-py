@@ -34,13 +34,16 @@ class Hammurabi:
         return acresToPlant
 
     def plagueDeaths(self, population):
-        pass
+       if random.randint(0,99) < 16:
+        deaths = population / 2
+        return deaths
 
     def starvationDeaths(self, population, bushelsFedToPeople):
-        pass
+        return 0
 
     def uprising(self, population, howManyPeopleStarved):
-        pass
+       if howManyPeopleStarved > population * (45 / 100):
+        return True
 
     def immigrants(self, population, acresOwned, grainInStorage):
         pass
@@ -49,10 +52,11 @@ class Hammurabi:
         pass
 
     def grainEatenByRats(self, bushels):
-        pass
+        return 0
 
     def newCostOfLand(self):
-        pass
+        land_val = random.randint(17,23)
+        return land_val
 
     def summary(self, population, grain, land, land_val):
 
