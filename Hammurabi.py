@@ -8,11 +8,17 @@ class Hammurabi:
     def main(self):
         self.playGame()
 
+
     def playGame(self):
         self.population = 100
         self.grain = 2800
         self.land = 1000
         self.land_val = 19
+        self.acresSold = 0
+        self.acresBought = 0
+        self.grainFood = 0
+        self.acresToPlant = 0
+
         # declare local variables here: grain, population, etc.
         # statements go after the declarations
 
@@ -26,8 +32,8 @@ class Hammurabi:
         return acresBought
 
     def askHowMuchGrainToFeedPeople(self):
-        feedPeople = int(input("How much grain will you give to your people?"))
-        return feedPeople
+        grainFood = int(input("How much grain will you give to your people?"))
+        return grainFood
 
     def askHowManyAcresToPlant(self):
         acresToPlant = int(input("How many acres will you plant?"))
