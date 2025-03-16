@@ -10,13 +10,6 @@ class Hammurabi:
 
 
     def playGame(self):
-        play_game = True
-        play_game = Hammurabi.start_game(play_game)
-
-
-        if play_game == False:
-            print("Leave.")
-        while play_game == True:
 
 
             population = 100
@@ -46,24 +39,17 @@ class Hammurabi:
                 "Land is currently worth " + str(land_val) + " bushels per acre.\n"
                 "==================================\n"
                 )
+
+
+
+
+
+
                 if i == 10:
                     return "end of loop"
 
 
     #other methods go here
-
-    def start_game(x):
-        z = input("Our last ruler abandoned us after Plague #66. You're the only guy who said yes. Correct?\n")
-        if z == "No":
-            print("You can't back out now.")
-            x = False
-        if z == "Yes":
-            x = True
-        else:
-            print("Stop wasting our time.")
-            x = False
-        return x
-
     def askHowManyAcresToBuy(self):
         acresSold = int(input("How many acres will you buy?"))
         return acresSold
