@@ -51,20 +51,21 @@ class Hammurabi:
                 )
 
 
-            bought_land = Hammurabi.askHowManyAcresToBuy(bushels, land_val)
-            if bought_land > 0:
-                bushels = bushels - (bought_land * land_val)
-                acre = acre + bought_land
+                bought_land = Hammurabi.askHowManyAcresToBuy(bushels, land_val)
+                if int(bought_land) > 0:
+                    bushels = int(bushels) - (int(bought_land) * int(land_val))
+                    acre = int(acre) + int(bought_land)
 
-            sell = Hammurabi.askHowManyAcresToSell(land_val, bushels, acre)
-            if sell > 0:
-                bushels = bushels + (sell * land_val)
-                acre = acre - sell
-            feed = Hammurabi.askHowMuchGrainToFeedPeople(bushels)
-            feed = bushels - feed
+                sell = Hammurabi.askHowManyAcresToSell(land_val, bushels, acre)
+                if int(sell) > 0:
+                    bushels = int(bushels) + (int(sell) * int(land_val))
+                    acre = int(acre) - int(sell)
 
-            plant = Hammurabi.askHowManyAcresToPlant(acre, population, bushels)
-            bushels = bushels - plant
+                feed = Hammurabi.askHowMuchGrainToFeedPeople(bushels)
+                feed = bushels - feed
+
+                plant = Hammurabi.askHowManyAcresToPlant(acre, population, bushels)
+                bushels = bushels - plant
 
 
 
@@ -74,28 +75,28 @@ class Hammurabi:
 
 
     #other methods go here
-    def askHowManyAcresToBuy(self, bushels, land_val):
+    def askHowManyAcresToBuy(bushels, land_val):
         acresBought = int(input("How many acres will you buy?"))
-        while acresBought * int(land_val) > bushels:
+        while int(acresBought) * int(land_val) > int(bushels):
             print(f"O Hammurabi, I'm not questioning your Wiseness, but we only have " + str(bushels) + "bushels of grain.")
             acresBought = int(input("How many acres will you buy?\n"))
         return acresBought
 
-    def askHowManyAcresToSell(self, land_val, bushels, acre):
+    def askHowManyAcresToSell(land_val, bushels, acre):
         sell = int(input("How many acres will you sell?"))
-        while sell > acre:
+        while int(sell) > int(acre):
             print(f"Our kindgom can't face being in debt to these heathen. We only have " + str(acre) + "acres of land.\n")
             sell = int(input("How many acres will you sell?"))
         return sell
 
-    def askHowMuchGrainToFeedPeople(self, bushels):
+    def askHowMuchGrainToFeedPeople(bushels):
         feed = int(input("How much grain will you give to your people?"))
         while feed > bushels:
             print(f"God bless you O Hammurabi for your generous spirit, but we have only " + str(bushels) + "bushels of grain left.")
             feed = int(input("How much grain will you give to your people?"))
         return feed
 
-    def askHowManyAcresToPlant(self, acre, population, bushels):
+    def askHowManyAcresToPlant(acre, population, bushels):
         plant = int(input("How many acres will you plant?"))
         while plant > (population * 10):
             print(f"Slavery is so--like--last kingdom, O Hammurabi one. You are more wise than that.\n")
@@ -108,29 +109,31 @@ class Hammurabi:
             plant = int(input("How many acres will you plant?\n"))
         return plant
 
-    def plagueDeaths(self, population):
+    def plagueDeaths(population):
         if random.randint(0,99) < 16:
             deaths = population / 2
         return deaths
 
-    def starvationDeaths(self, population, bushelsFedToPeople):
-        return 0
+    def starvationDeaths(population, bushelsFedToPeople):
+        if bushelsFedToPeople < 20 * population:
+            return 5
 
-    def uprising(self, population, howManyPeopleStarved):
+
+    def uprising(population, howManyPeopleStarved):
         if howManyPeopleStarved > population * (45 / 100):
             return True
 
-    def immigrants(self, population, acresOwned, grainInStorage):
+    def immigrants(population, acresOwned, grainInStorage):
             pass
 
-    def harvest(self, acres, bushelsUsedAsSeed):
+    def harvest(acres, bushelsUsedAsSeed):
             pass
 
-    def grainEatenByRats(self, bushels):
+    def grainEatenByRats(bushels):
             return 0
 
     def newCostOfLand(self):
-        land_val = random.randint(17,23)
+        land_val = random.randint(17, 23)
         return land_val
 
 
