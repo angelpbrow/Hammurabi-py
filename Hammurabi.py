@@ -14,8 +14,18 @@ class Hammurabi:
 
             population = 100
             grain = 2800
-            land = 1000
+            acre = 1000
             land_val = 19
+            bushels = 2000
+            harvest = 0
+            starved = 0
+            feed = 0
+            fed = 0
+            immigrants = 0
+            total_starved = 0
+            bushelsPerAcre = 0
+            ratsDestroyed = 0
+
             acresSold = 0
             sacresBought = 0
             grainFood = 0
@@ -30,41 +40,73 @@ class Hammurabi:
                 "=================================\n"
                 "O great Hammurabi!\n"
                 "You are in year " + str(i) + " of your ten year rule.\n"
-                "In the previous year 0 people starved to death.\n"
-                "In the previous year 5 people entered the kingdom.\n"
+                "In the previous year " + str(total_starved) + " people starved to death.\n"
+                "In the previous year " + str(immigrants ) + " people entered the kingdom.\n"
                 "The population is now " + str(population) + ".\n"
                 "We harvested " + str(grain) + " bushels at " + str(land_val) + " bushels per acre.\n"
-                "Rats destroyed 200 bushels, leaving 2800 bushels in storage.\n"
-                "The city owns " + str(land) + " acres of land.\n"
+                "Rats destroyed " + str(ratsDestroyed) + " bushels, leaving 2800 bushels in storage.\n"
+                "The city owns " + str(acre) + " acres of land.\n"
                 "Land is currently worth " + str(land_val) + " bushels per acre.\n"
                 "==================================\n"
                 )
 
 
+            bought_land = Hammurabi.askHowManyAcresToBuy(bushels, land_val)
+            if bought_land > 0:
+                bushels = bushels - (bought_land * land_val)
+                acre = acre + bought_land
+
+            sell = Hammurabi.askHowManyAcresToSell(land_val, bushels, acre)
+            if sell > 0:
+                bushels = bushels + (sell * land_val)
+                acre = acre - sell
+            feed = Hammurabi.askHowMuchGrainToFeedPeople(bushels)
+            feed = bushels - feed
+
+            plant = Hammurabi.askHowManyAcresToPlant(acre, population, bushels)
+            bushels = bushels - plant
 
 
 
 
-                if i == 10:
-                    return "end of loop"
+             #   if i == 10:
+             #       return "end of loop"
 
 
     #other methods go here
-    def askHowManyAcresToBuy(self):
-        acresSold = int(input("How many acres will you buy?"))
-        return acresSold
-
-    def askHowManyAcresToSell(self):
-        acresBought = int(input("How many acres will you sell?"))
+    def askHowManyAcresToBuy(self, bushels, land_val):
+        acresBought = int(input("How many acres will you buy?"))
+        while acresBought * int(land_val) > bushels:
+            print(f"O Hammurabi, I'm not questioning your Wiseness, but we only have " + str(bushels) + "bushels of grain.")
+            acresBought = int(input("How many acres will you buy?\n"))
         return acresBought
 
-    def askHowMuchGrainToFeedPeople(self):
-        grainFood = int(input("How much grain will you give to your people?"))
-        return grainFood
+    def askHowManyAcresToSell(self, land_val, bushels, acre):
+        sell = int(input("How many acres will you sell?"))
+        while sell > acre:
+            print(f"Our kindgom can't face being in debt to these heathen. We only have " + str(acre) + "acres of land.\n")
+            sell = int(input("How many acres will you sell?"))
+        return sell
 
-    def askHowManyAcresToPlant(self):
-        acresToPlant = int(input("How many acres will you plant?"))
-        return acresToPlant
+    def askHowMuchGrainToFeedPeople(self, bushels):
+        feed = int(input("How much grain will you give to your people?"))
+        while feed > bushels:
+            print(f"God bless you O Hammurabi for your generous spirit, but we have only " + str(bushels) + "bushels of grain left.")
+            feed = int(input("How much grain will you give to your people?"))
+        return feed
+
+    def askHowManyAcresToPlant(self, acre, population, bushels):
+        plant = int(input("How many acres will you plant?"))
+        while plant > (population * 10):
+            print(f"Slavery is so--like--last kingdom, O Hammurabi one. You are more wise than that.\n")
+            plant = int(input("How many acres will you plant?\n"))
+        while (plant * 2) > bushels:
+            print(f"Our farmers crunched the numbers and there's not enough grain to fill that request. \n")
+            plant = int(input("How many acres will you plant?\n"))
+        while plant > acre:
+            print(f"God's Kingdom reaches from the firmanent to the bottom of the seas. Our Kingdom pales in comparison.\n We only have " + str(acre) +"acres of land.")
+            plant = int(input("How many acres will you plant?\n"))
+        return plant
 
     def plagueDeaths(self, population):
         if random.randint(0,99) < 16:
